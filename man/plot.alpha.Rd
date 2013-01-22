@@ -1,19 +1,23 @@
 \name{plot.alpha}
 \alias{plot.alpha}
+\alias{plot.omega}
 \alias{plot}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Alpha related plot
+Alpha/Omega related plot
 }
 \description{
-Generate plot related to alpha. Three plot can be generated. (1) The weight plot will plot the weight associated with alpha calculation. (2) Profile plot will plot the cases with smallest weights and the average value. (3) The diagnostic plot plots the alpha according to different values of the tuning parameter.}
+Generate plot related to alpha or omega. Three plot can be generated. (1) The weight plot will plot the weight associated with alpha calculation. (2) Profile plot will plot the cases with smallest weights and the average value. (3) The diagnostic plot plots the alpha according to different values of the tuning parameter.}
 \usage{
-\method{plot}{alpha}(x, type="weight", profile=5, interval=0.01,center=TRUE, scale=FALSE, w1=FALSE, numbered=FALSE, pos="topright",...)
+\method{plot}{alpha}(x, type="weight", profile=5, interval=0.01,
+center=TRUE, scale=FALSE, w1=FALSE, numbered=FALSE, pos="topright",...)
+\method{plot}{omega}(x, type="weight", profile=5, interval=0.01,
+center=TRUE, scale=FALSE, w1=FALSE, numbered=FALSE, pos="topright",...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-Results from the function \code{\link{cronbach}}.
+Results from the function \code{\link{alpha}} or \code{\link{omega}}.
 }
   \item{type}{
 Three types of plots can be generated. \code{type="weight"} generates the plot of weight of each case.
@@ -39,61 +43,25 @@ The interval used in the diagnostic plot. The default is 0.01.}
 Zhiyong Zhang and Ke-Hai Yuan
 }
 \references{
-Zhang, Z. & Yuan, K.-H. (2013). Robust Cronbach's alpha.
+Zhang, Z. & Yuan, K.-H. (2014). Robust Coefficients Alpha and Omega and their Confidence Intervals: Methods and Software.
 }
 \examples{
-data(holzinger)
-spatial<-holzinger[, c('visual', 'cubes', 'paper', 'lozenge', 'paperrev','flagssub')]
-verbal<-holzinger[, c('general', 'paragrap', 'sentence', 'wordc', 'wordm')]
-speed<-holzinger[, c('add', 'code', 'counting', 'straight')]
-memory<-holzinger[, c('wordr', 'numberr', 'figurer', 'object', 'numberf', 'figurew')]
+data(example)
 
-alpha.spatial<-cronbach(spatial)
+res<-alpha(example, varphi=.01)
 ## diagnostic plot
-plot(alpha.spatial, type='d')
+plot(res, type='d')
 
 ## alpha with varphi=.01 & standard error
-alpha.spatial<-cronbach(spatial, varphi=.01, se=TRUE)
+res<-alpha(example, varphi=.01, se=TRUE)
 ## confidence interval
-summary(alpha.spatial)
+summary(res)
 
 ## weight plot
-plot(alpha.spatial)
+plot(res)
 # or
-plot(alpha.spatial, type='w')
+plot(res, type='w')
 
 ## profile plot
-plot(alpha.spatial, type='p')
-
-
-alpha.verbal<-cronbach(verbal, varphi=.02, se=TRUE)
-## confidence interval
-summary(alpha.verbal)
-
-## weight plot
-plot(alpha.verbal)
-
-## profile plot
-plot(alpha.verbal, type='p', profile=6)
-
-alpha.speed<-cronbach(speed, varphi=.01, se=TRUE)
-## confidence interval
-summary(alpha.speed)
-
-## weight plot
-plot(alpha.speed)
-
-## profile plot
-plot(alpha.speed, type='p', pos='topleft')
-
-alpha.memory<-cronbach(memory, varphi=.04, se=TRUE)
-## confidence interval
-summary(alpha.memory)
-
-## weight plot
-plot(alpha.memory)
-
-## profile plot
-plot(alpha.memory, type='p', profile=10, pos='bottomright')
- plot(alpha.memory, type='p', profile=10, scale=TRUE, pos='bottomright')
+plot(res, type='p')
 }

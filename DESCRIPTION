@@ -1,22 +1,16 @@
 Package: coefficientalpha
 Type: Package
-Title: Robust Cronbach's alpha with missing and non-normal data
-Version: 0.2.6
+Title: Robust Cronbach's Alpha and Mcdonald's Omega with Missing and
+        Non-normal Data
+Version: 0.3.2
 Date: 2013-01-22
-Depends: MASS
+Depends: rsem, lavaan
 Author: Zhiyong Zhang and Ke-Hai Yuan
 Maintainer: Zhiyong Zhang <johnnyzhz@gmail.com>
-Description: Cronbach's alpha is one of the most widely used
-        reliability or internal consistency measures in social,
-        behavioral and education sciences. Alpha is reported in nearly
-        every study that involves measuring a construct through
-        multiple test items. The package coefficientalpha calculates
-        Cronbach's coefficient alpha with missing data and non-normal
-        data. Robust standard error and confidence interval are also
-        provided.
+Description: Cronbach's alpha and McDonald's omega are widely used reliability or internal consistency measures in social, behavioral and education sciences. Alpha is reported in nearly every study that involves measuring a construct through multiple test items. The package coefficientalpha calculates coefficient alpha and omega with missing data and non-normal data. Robust standard errors and confidence intervals are also provided. A test is also available to test the tau-equivalent and homogeneous assumptions.
 License: GPL
 LazyLoad: yes
-Packaged: 2013-04-25 12:57:26 UTC; zzhang4
+Packaged: 2014-11-14 01:50:20 UTC; zzhang4
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2013-04-25 15:44:25
+Date/Publication: 2014-11-14 08:16:30

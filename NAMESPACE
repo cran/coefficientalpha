@@ -1,1 +1,7 @@
 exportPattern("^[[:alpha:]]+")
+importFrom(rsem,rsem.pattern)
+importFrom(rsem,rsem.Ascov)
+importFrom(rsem,rsem.emmusig)
+importFrom(rsem,rsem.se)
+importFrom(rsem,rsem.fit)
+importFrom(lavaan,cfa)

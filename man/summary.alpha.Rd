@@ -1,19 +1,21 @@
 \name{summary.alpha}
 \alias{summary}
 \alias{summary.alpha}
+\alias{summary.omega}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Print alpha and its confidence interval.
+Print alpha/omega and its confidence interval.
 }
 \description{
-Print alpha and its confidence interval.}
+Print alpha/omega and its confidence interval.}
 \usage{
 \method{summary}{alpha}(object, prob = 0.95,...)
+\method{summary}{omega}(object, prob = 0.95,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{object}{
-Results from the function \code{\link{cronbach}}.
+Results from the function \code{\link{alpha}} or \code{\link{omega}}.
 }
   \item{prob}{
 Alpha level for confidence interval. By default, the 95% CI is calculated.
@@ -24,21 +26,17 @@ Alpha level for confidence interval. By default, the 95% CI is calculated.
 Zhiyong Zhang and Ke-Hai Yuan
 }
 \references{
-Zhang, Z. & Yuan, K.-H. (2013). Robust Cronbach's alpha.
+Zhang, Z. & Yuan, K.-H. (2014). Robust Coefficients Alpha and Omega and their Confidence Intervals: Methods and Software.
 }
 \examples{
-data(holzinger)
-spatial<-holzinger[, c('visual', 'cubes', 'paper', 'lozenge', 'paperrev','flagssub')]
-verbal<-holzinger[, c('general', 'paragrap', 'sentence', 'wordc', 'wordm')]
-speed<-holzinger[, c('add', 'code', 'counting', 'straight')]
-memory<-holzinger[, c('wordr', 'numberr', 'figurer', 'object', 'numberf', 'figurew')]
+data(example)
 
-alpha.spatial<-cronbach(spatial)
+res<-alpha(example, varphi=.01)
 ## diagnostic plot
-plot(alpha.spatial, type='d')
+plot(res, type='d')
 
 ## alpha with varphi=.01 & standard error
-alpha.spatial<-cronbach(spatial, varphi=.01, se=TRUE)
+res<-alpha(example, varphi=.01, se=TRUE)
 ## confidence interval
-summary(alpha.spatial)
+summary(res)
 }
