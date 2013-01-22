@@ -144,7 +144,8 @@ plot.alpha<-function(x, type="weight", profile=5, interval=0.01, center=TRUE, sc
 		for (i in 1:length(phi)){
 			alpha.diag<-c(alpha.diag, alpha(y, phi[i])$alpha)
 		}
-		plot(phi, alpha.diag, xlab='varphi', ylab='alpha',...)
+		plot(phi, alpha.diag, type='o', xlab='varphi', ylab='alpha', ylim=c(0,1), ...)
+		points(phi, alpha.diag, bg='black', pch=21, cex=1, lwd=1)
 	}
 }
 
@@ -284,7 +285,7 @@ plot.omega<-function(x, type="weight", profile=5, interval=0.01, center=TRUE, sc
 	y<-res$y
 	outcase.temp<-sum(res$weight$w1<1)
 	## find the smallest weight
-	if (profile==0){
+	if (profile==5){
 		outcase<-5
 		if (outcase.temp<5) outcase<-outcase.temp
 	}
@@ -293,7 +294,7 @@ plot.omega<-function(x, type="weight", profile=5, interval=0.01, center=TRUE, sc
 	## find the smallest cases
 	temp<-sort(res$weight$w1)
 	
-	if (profile==0){
+	if (profile==5){
 		idx<-which(res$weight$w1 <= temp[outcase])
 	}else{
 		idx<-which(res$weight$w1 <= temp[profile])
@@ -364,7 +365,8 @@ plot.omega<-function(x, type="weight", profile=5, interval=0.01, center=TRUE, sc
 		for (i in 1:length(phi)){
 			omega.diag<-c(omega.diag, omega(y, phi[i])$omega)
 		}
-		plot(phi, omega.diag, xlab='varphi', ylab='omega',...)
+		plot(phi, omega.diag, xlab='varphi', type='o', lwd=1, ylab='omega', ylim=c(0,1), ...)
+		points(phi, omega.diag, bg='black', pch=21, cex=1, lwd=1)
 	}
 }
 
@@ -401,7 +403,7 @@ tau.test<-function(y, varphi=0.1, complete=FALSE, drop){
 	cfa.res1<-cfa(model, sample.cov=sigma, sample.mean=cov1$mu, meanstructure = TRUE, sample.nobs=n)
 	
 	robust.fit1 <- rsem.fit(cfa.res1, ascov$Gamma, cov1)
-	fit1<-robust.fit1[[1]][[1]]
+	fit1<-robust.fit1[[4]][[1]]
 	## model with the single factor
 	model<-paste('f =~ ', vname[1])
 	for (i in 2:length(vname)){
@@ -412,16 +414,16 @@ tau.test<-function(y, varphi=0.1, complete=FALSE, drop){
 	cfa.res2<-cfa(model, sample.cov=sigma, sample.mean=cov1$mu, meanstructure = TRUE, sample.nobs=n, std.lv=TRUE)
 	
 	robust.fit2 <- rsem.fit(cfa.res2, ascov$Gamma, cov1)
-	fit2<-robust.fit2[[1]][[1]]
+	fit2<-robust.fit2[[4]][[1]]
 	
 	cat("Test of tau equivalent\n")
-	cat("The robust chi-square statistic is ", round(fit1[1],3), "\n")
-	cat("with a p-value ", round(fit1[3],4), "\n\n")
+	cat("The robust F statistic is ", round(fit1[1],3), "\n")
+	cat("with a p-value ", round(fit1[4],4), "\n\n")
 
 	
 	cat("Test of homogeneous items\n")
-	cat("The robust chi-square statistic is ", round(fit2[1],3), "\n")
-	cat("with a p-value ", round(fit2[3],4), "\n")
+	cat("The robust F statistic is ", round(fit2[1],3), "\n")
+	cat("with a p-value ", round(fit2[4],4), "\n")
 
 	test<-list(tau=cfa.res1,homo=cfa.res2,tau.fit=fit1,homo.fit=fit2)
 	class(test)<-'test'

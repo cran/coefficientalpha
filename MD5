@@ -1,7 +1,8 @@
-70c9e1ac8c99ee11e0d25074b8cd8947 *DESCRIPTION
+4161d6406c278edd5a4a96deb67119d3 *DESCRIPTION
 0b85bec0f170e9bde110d056925a18c3 *NAMESPACE
-17d68ebe9b423c023da9791dc69a20d7 *R/Cronbach.R
-d8f02e9f2f13374ba5c068220398ffeb *data/example.txt.gz
+cc9b05e87b6c53ba33251423c9264b0a *R/Cronbach.R
+0f1ff9a1336c45b4fafcc607127c0e98 *data/example.txt.gz
+c8ac07a7e356e7991bd12d7f49ba3a24 *inst/doc/manual.pdf
 2df00cc13c7e197a96ef6f13acb92813 *man/alpha.Rd
 2341293733d6c909e6ee03dda86745ba *man/coefficientalpha-package.Rd
 f29d9750d38b1ce389e810eb60417ad3 *man/example.Rd
