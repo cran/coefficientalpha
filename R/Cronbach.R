@@ -16,8 +16,12 @@ rsem.pattern<-function(x,print=FALSE){
   if (missing(x)) stop("A data set has to be provided!")
   if (!is.matrix(x)) x<-as.matrix(x)
   y<-x
+  ## check to see if all data are missing
+  M<-is.na(x)
+  nM<-max(apply(M,1,sum))
   n<-dim(x)[1]
   p<-dim(x)[2]
+  if (nM==p) stop("Some cases have missing data on all variables. Please delete them first.")
   misorder<-rep(0,n)
   for (i in 1:n){
     misorderj<-0
@@ -639,7 +643,7 @@ cronbach<-function(y, varphi=0.1, se=FALSE, complete=FALSE){
 }
 
 
-plot.alpha<-function(x, type="weight", profile=5, interval=0.01, center=TRUE, scale=FALSE, pos='topright', ...){
+plot.alpha<-function(x, type="weight", profile=5, interval=0.01, center=TRUE, scale=FALSE, w1=FALSE, numbered=FALSE, pos='topright', ...){
 	## type: weight, profile, diagnosis
 	res<-x
 	y<-res$y
@@ -661,55 +665,60 @@ plot.alpha<-function(x, type="weight", profile=5, interval=0.01, center=TRUE, sc
 	}
 	
 	if (substr(type,1,1)=="w"){
-		par(mfrow=c(2,1))
-		plot(res$weight$w1, ylim=c(0,1), xlab='Case number', ylab='Weight w1', main='Weights for mean estimates',...)
-		text(idx, res$weight$w1[idx], idx, pos=1, col='red')
-		plot(res$weight$w2, ylim=c(0,max(res$weight$w2)), xlab='Case number', ylab='Weight w2', main='Weights for covariance estimates',...)
-		
-		text(idx, res$weight$w2[idx], idx, pos=1, col='red')
-		par(mfrow=c(1,1))
+		if (w1){
+			par(mfrow=c(2,1))
+			plot(res$weight$w1, ylim=c(0,1), xlab='Case number', ylab='Weight w1', main='Weights for mean estimates',...)
+			text(idx, res$weight$w1[idx], idx, pos=1, col='red', ...)
+			plot(res$weight$w2, ylim=c(0,max(res$weight$w2)), xlab='Case number', ylab='Weight w2', main='Weights for covariance estimates',...)		
+			text(idx, res$weight$w2[idx], idx, pos=1, col='red', ...)
+			par(mfrow=c(1,1))
+		}else{
+			plot(res$weight$w2, ylim=c(0,max(res$weight$w2)), xlab='Case number', ylab='Weight w2',...)		
+			text(idx, res$weight$w2[idx], idx, pos=1, col='red', ...)
+		}
 	} 
 	
 	if (substr(type,1,1)=="p"){
-		## generate the plot
-		
+		## profile plot		
 		if (center){
-      if (scale){
-         for (i in 1:nrow(y)){
+			if (scale){
+				for (i in 1:nrow(y)){
 				   y[i, ]<-(y[i, ]-res$musig$mu)/sqrt(diag(res$musig$sigma))
 			   }
-      }else{
-         for (i in 1:nrow(y)){
+			}else{
+				for (i in 1:nrow(y)){
 				   y[i, ]<-y[i, ]-res$musig$mu
-			   }
-      }			
+				}
+			}			
 		}
 		l.min<-min(y, na.rm=TRUE)
 		l.max<-max(y, na.rm=TRUE)
 	
 		p<-ncol(y)
+		
 		if (center){
-			plot(1:p, rep(0,p), type='l', ylim=c(l.min, l.max), lwd=3, ylab='Score', xlab='', axes=FALSE, ...)
+			plot(1:p, rep(0,p), type='l', ylim=c(l.min, l.max), lwd=3, ylab='Score', xlab='', axes=FALSE, col='black', ...)
 		}else{
-			plot(1:p, res$musig$mu, type='l', ylim=c(l.min, l.max), lwd=3, ylab='Score', xlab='', axes=FALSE, ...)
+			plot(1:p, res$musig$mu, type='l', ylim=c(l.min, l.max), lwd=3, ylab='Score', xlab='', axes=FALSE, col='black', ...)
 		}
 		box()
-		axis(1, at=1:p, labels=names(y), las=2)
-		axis(2)
-		ltyno<-1	
-    idx.type<-NULL	
-		for (i in idx){
-			lines(1:p, y[i, ], lty=ltyno, ...)
-			#text(1:p, y[i,], i)
-			ltyno<-ltyno+1
-      ## type of outliers
-      temp.type<-'(O)'
-      if (max(y[i, ], na.rm=TRUE)<0)  temp.type<-'(L-)'
-      if (min(y[i, ], na.rm=TRUE)>0)  temp.type<-'(L+)'
-      idx.type<- c(idx.type, temp.type)
-		}
+		axis(1, at=1:p, labels=names(y), las=2, ...)
+		axis(2, ...)
+		
 		if (!is.null(pos)){
-			legend(pos, legend=paste(idx, idx.type), lty=1:ltyno, ...)
+			ltyno<-1	
+			idx.type<-NULL	
+			for (i in idx){
+				lines(1:p, y[i, ], lty=ltyno, ...)
+				if (numbered & center) text(1, y[i,1], i)
+				ltyno<-ltyno+1
+				## type of outliers
+				temp.type<-'(O)'
+				if (max(y[i, ], na.rm=TRUE)<0)  temp.type<-'(L-)'
+				if (min(y[i, ], na.rm=TRUE)>0)  temp.type<-'(L+)'
+				idx.type<- c(idx.type, temp.type)
+			}
+			legend(pos, legend=paste(idx, idx.type), lty=1:ltyno)
 		}
 	}
 	

@@ -8,7 +8,7 @@ Alpha related plot
 \description{
 Generate plot related to alpha. Three plot can be generated. (1) The weight plot will plot the weight associated with alpha calculation. (2) Profile plot will plot the cases with smallest weights and the average value. (3) The diagnostic plot plots the alpha according to different values of the tuning parameter.}
 \usage{
-\method{plot}{alpha}(x, type="weight", profile=5, interval=0.01,center=TRUE, scale=FALSE, pos="topright",...)
+\method{plot}{alpha}(x, type="weight", profile=5, interval=0.01,center=TRUE, scale=FALSE, w1=FALSE, numbered=FALSE, pos="topright",...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -30,6 +30,8 @@ The interval used in the diagnostic plot. The default is 0.01.}
 \item{scale}{
  Whether to scale the data using variance parameters in the profile plot.
 }
+\item{w1}{Whether to plot the weight for means}
+\item{numbered}{Whether to number the profile plot}
   \item{pos}{Position of legend. If pos=NULL, no legend is plotted.}
 \item{...}{Options can be passed to the \code{\link{plot}} function.}
 }

@@ -1,11 +1,11 @@
-5072251a4692026fdbadf8cc8979fba2 *DESCRIPTION
+dd0781db9111ae46c0d0b9f0a2ec68de *DESCRIPTION
 8b54e5a89fbda3af5e077053d40bec76 *NAMESPACE
-5961125a32e31a125460478dd10ebdce *R/Cronbach.R
-61cbd787210d14a24cee9ef3410d40ca *data/holzinger.txt.gz
+8fa434b66461bbb8311d2137faf6f061 *R/Cronbach.R
+8c74a51d959e569415643549bd049986 *data/holzinger.txt.gz
 fde01096cc8abd5a2db800e9cfee943e *man/coefficientalpha-package.Rd
 17244ae68b6f0ef744e9543ef5694491 *man/cronbach.Rd
 5758c1d6c093bfcb1968e25bfecfe497 *man/holzinger.Rd
-1e3a4791022cad79f1ed7ae6132cb429 *man/plot.alpha.Rd
+767237b6bdecdc4fd79cedd2f3b3adb9 *man/plot.alpha.Rd
 bcb4edd6ca4f70a12cb0782668867a48 *man/rsem.Ascov.Rd
 f05e37fdb7502949c10408f4fe21a3e5 *man/rsem.DP.Rd
 8a360161adbe8638d03141882859a44b *man/rsem.emmusig.Rd
