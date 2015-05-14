@@ -1,11 +1,12 @@
-4161d6406c278edd5a4a96deb67119d3 *DESCRIPTION
-0b85bec0f170e9bde110d056925a18c3 *NAMESPACE
-cc9b05e87b6c53ba33251423c9264b0a *R/Cronbach.R
+cbd5fa8cc086a06b10c38ce445e01e2e *DESCRIPTION
+87c1df94a592923c4bba8d14dcf077e6 *NAMESPACE
+96ae0c318e39f347c0e6c054d4a36492 *R/Cronbach.R
 0f1ff9a1336c45b4fafcc607127c0e98 *data/example.txt.gz
 c8ac07a7e356e7991bd12d7f49ba3a24 *inst/doc/manual.pdf
-2df00cc13c7e197a96ef6f13acb92813 *man/alpha.Rd
+43b28551912cd37d5d46c2a1a5aae194 *man/alpha.Rd
+968c8c0d199c5785cb7d7b18b4fb8878 *man/bootstrap.Rd
 2341293733d6c909e6ee03dda86745ba *man/coefficientalpha-package.Rd
 f29d9750d38b1ce389e810eb60417ad3 *man/example.Rd
 17fcd433542ce6270413f1319e6424c2 *man/plot.alpha.Rd
-4c1485b401078c1fad4fd8177bfed9e2 *man/summary.alpha.Rd
+50ff3f80d35fa02473219fee3d759c5e *man/summary.alpha.Rd
 7ea1e292a93b06e236df7fc4507457e1 *man/tau.test.Rd

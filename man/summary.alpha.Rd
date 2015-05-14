@@ -9,13 +9,16 @@ Print alpha/omega and its confidence interval.
 \description{
 Print alpha/omega and its confidence interval.}
 \usage{
-\method{summary}{alpha}(object, prob = 0.95,...)
-\method{summary}{omega}(object, prob = 0.95,...)
+\method{summary}{alpha}(object, type = "raw", prob = 0.95,...)
+\method{summary}{omega}(object, type = "raw", prob = 0.95,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{object}{
 Results from the function \code{\link{alpha}} or \code{\link{omega}}.
+}
+  \item{type}{
+If not \code{raw}, the CI based on transformation will be provided. The transformed CI will be always in the range of [0,1].
 }
   \item{prob}{
 Alpha level for confidence interval. By default, the 95% CI is calculated.

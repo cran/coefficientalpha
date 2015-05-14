@@ -5,3 +5,9 @@ importFrom(rsem,rsem.emmusig)
 importFrom(rsem,rsem.se)
 importFrom(rsem,rsem.fit)
 importFrom(lavaan,cfa)
+
+S3method(summary,alpha)
+S3method(plot,alpha)
+
+S3method(summary,omega)
+S3method(plot,omega)
