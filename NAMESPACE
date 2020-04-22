@@ -5,9 +5,15 @@ importFrom(rsem,rsem.emmusig)
 importFrom(rsem,rsem.se)
 importFrom(rsem,rsem.fit)
 importFrom(lavaan,cfa)
-
+importFrom(lavaan,parTable)
+importFrom(lavaan,parameterEstimates)
 S3method(summary,alpha)
 S3method(plot,alpha)
 
 S3method(summary,omega)
 S3method(plot,omega)
+
+importFrom("graphics", "axis", "box", "legend", "lines", "par", "plot",
+             "points", "text")
+importFrom("stats", "density", "na.omit", "pnorm", "qnorm", "quantile",
+             "sd")

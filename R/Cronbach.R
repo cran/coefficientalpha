@@ -239,7 +239,7 @@ summary.alpha<-function(object, type='raw', prob=.95, ...){
 			se.lambda<-res$se/(res$alpha*(1-res$alpha))
 			ci<-c( 1/(1+exp(-lambda+abs(qnorm(prob/2))*se.lambda)),  1/(1+exp(-lambda-abs(qnorm(prob/2))*se.lambda)))
 		}else{
-			ci<-res$alpha+c(-1,1)*abs(qnorm(prob/2))*res$se
+			ci<-c(res$alpha-abs(qnorm(prob/2))*res$se, res$alpha+abs(qnorm(prob/2))*res$se)
 			if (ci[2]>1) ci[2]<-1.000
 			if (ci[1]<0) ci[1]<-0.000
 		}
@@ -310,8 +310,10 @@ omega<-function(y, varphi=0.1, se=FALSE, test=TRUE, complete=FALSE, auxiliary=NU
 	cfa.res<-cfa(model, sample.cov=sigma, sample.mean=cov1$mu, meanstructure = TRUE, sample.nobs=n, std.lv=TRUE)
 
 	## calculate omega
-	cfa.load<-cfa.res@Fit@est[cfa.res@ParTable$op=="=~" & cfa.res@ParTable$free>0]
-	cfa.psi<-cfa.res@Fit@est[cfa.res@ParTable$op=="~~" & cfa.res@ParTable$free>0]
+	partable <- parTable(cfa.res)
+	parest <- parameterEstimates(cfa.res)
+	cfa.load<-parest$est[partable$op=="=~" & partable$free>0]
+	cfa.psi<-parest$est[partable$op=="~~" & partable$free>0]
 	
 	p1<-(sum(cfa.load))^2
 	p2<- p1 + sum(cfa.psi)
@@ -393,7 +395,7 @@ summary.omega<-function(object, type='raw', prob=.95,...){
 			se.lambda<-res$se/(res$omega*(1-res$omega))
 			ci<-c( 1/(1+exp(-lambda+abs(qnorm(prob/2))*se.lambda)),  1/(1+exp(-lambda-abs(qnorm(prob/2))*se.lambda)))
 		}else{
-			ci<-res$omega+c(-1,1)*abs(qnorm(prob/2))*res$se
+			ci<-c(res$omega-abs(qnorm(prob/2))*res$se, res$omega+abs(qnorm(prob/2))*res$se)
 			if (ci[2]>1) ci[2]<-1.000
 			if (ci[1]<0) ci[1]<-0.000
 		}
