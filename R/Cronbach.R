@@ -580,7 +580,7 @@ bootstrap<-function(y, type="omega", alpha=.95, nboot=1000, ci="bc", plot=FALSE,
 		for (i in 1:nboot){
 			bdata<-y[sample(1:n, n, replace=TRUE), ]
 			temp<-try(omega(bdata,varphi=varphi, se=FALSE, test=FALSE, silent=silent))
-			if (class(temp) != "try-error") {
+			if (!inherits(temp, "try-error")) {
 				boot.res[i] <- temp$omega
 			}
 		}
@@ -591,7 +591,7 @@ bootstrap<-function(y, type="omega", alpha=.95, nboot=1000, ci="bc", plot=FALSE,
 		for (i in 1:nboot){
 			bdata<-y[sample(1:n, n, replace=TRUE), ]
 			temp<-try(alpha(bdata,varphi=varphi, se=FALSE, test=FALSE, silent=silent))
-			if (class(temp) != "try-error") {
+			if (!inherits(temp, "try-error")) {
 				boot.res[i] <- temp$alpha
 			}
 		}
