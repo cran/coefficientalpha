@@ -3,17 +3,15 @@
 \alias{coefficientalpha}
 \docType{package}
 \title{
- Robust Cronbach's alpha and McDonald's omega with missing and non-normal data
+ Robust Coefficient Alpha and Omega with Missing and Non-Normal Data
 }
 \description{
-An R package to calculate coefficient alpha and omega with missing data and non-normal data. Robust standard errors and confidence intervals are also provided.
+Cronbach's alpha and McDonald's omega are widely used reliability or internal consistency measures in social, behavioral and education sciences. Alpha is reported in nearly every study that involves measuring a construct through multiple test items. The package 'coefficientalpha' calculates coefficient alpha and coefficient omega with missing data and non-normal data. Robust standard errors and confidence intervals are also provided. A test is also available to test the tau-equivalent and homogeneous assumptions. Since Version 0.5, the bootstrap confidence intervals were added.
 }
 \details{
 \tabular{ll}{
 Package: \tab coefficientalpha\cr
 Type: \tab Package\cr
-Version: \tab 0.3\cr
-Date: \tab 2013-01-22\cr
 License: \tab GPL\cr
 }
 }

@@ -1,11 +1,11 @@
-83920a7614f681016c6a58f2e91d2884 *DESCRIPTION
+e33149094b5ad21ea27b8b506eae2981 *DESCRIPTION
 8f257efb76e53c0516f924a65fa7622f *NAMESPACE
 f1002590a74db85fa6c8254c01e7b8a6 *R/Cronbach.R
 0f1ff9a1336c45b4fafcc607127c0e98 *data/example.txt.gz
 c8ac07a7e356e7991bd12d7f49ba3a24 *inst/doc/manual.pdf
 43b28551912cd37d5d46c2a1a5aae194 *man/alpha.Rd
 968c8c0d199c5785cb7d7b18b4fb8878 *man/bootstrap.Rd
-2341293733d6c909e6ee03dda86745ba *man/coefficientalpha-package.Rd
+32b57f40bf8b661852cceb19e119ac0f *man/coefficientalpha-package.Rd
 f29d9750d38b1ce389e810eb60417ad3 *man/example.Rd
 17fcd433542ce6270413f1319e6424c2 *man/plot.alpha.Rd
 50ff3f80d35fa02473219fee3d759c5e *man/summary.alpha.Rd
